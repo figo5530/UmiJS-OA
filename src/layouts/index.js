@@ -5,7 +5,10 @@ import './index.scss'
 
 const { Content } = Layout;
 
-function BasicLayout({ children }) {
+function BasicLayout({ children, location }) {
+  if (location.pathname === '/login') {
+    return children
+  }
   return (
     <Layout className="basic-layout">
       <Header />
