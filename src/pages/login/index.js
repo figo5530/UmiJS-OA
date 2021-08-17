@@ -4,7 +4,7 @@ import styles from './index.scss'
 
 const { Content, Footer } = Layout;
 const iconStyle = { color: 'rgba(0,0,0,.25)' };
-export default function index() {
+const index = ({ form }) => {
     return (
         <Layout>
             <Content className={styles.content}>
@@ -15,19 +15,37 @@ export default function index() {
                     </h1>
                     <Form>
                         <Form.Item>
-                        <Input
+                            {form.getFieldDecorator('username', {
+                                    rules: [
+                                        {
+                                            required: true,
+                                            message: "Username can not be empty",
+                                        },
+                                    ],
+                                })(
+                            <Input
                             prefix={<Icon type="user" style={iconStyle} />}
                             placeholder="Username"
                             autoFocus
-                        />
+                        />,
+                        )}
                         </Form.Item>
                         <Form.Item>
+                        {form.getFieldDecorator('password', {
+                                    rules: [
+                                        {
+                                            required: true,
+                                            message: "password can not be empty",
+                                        },
+                                    ],
+                                })(
                         <Input
                             type="password"
                             prefix={<Icon type="lock" style={iconStyle} />}
                             placeholder="Password"
                             autoFocus
-                        />
+                        />,
+                        )}
                         </Form.Item>
                         <Form.Item>
                         <Button type="primary" style={{ width: '100%' }}>
@@ -41,6 +59,7 @@ export default function index() {
                 Copyright <Icon type="copyright" /> 2021 Yinghui Gan
             </Footer>
         </Layout>
-    )
-    
+    )    
 }
+
+export default Form.create()(index)
