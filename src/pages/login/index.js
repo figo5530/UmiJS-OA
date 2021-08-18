@@ -1,10 +1,24 @@
 import React from 'react'
 import { Layout, Icon, Form, Input, Button } from 'antd'
+import fetch from 'dva/fetch'
 import styles from './index.scss'
 
 const { Content, Footer } = Layout;
 const iconStyle = { color: 'rgba(0,0,0,.25)' };
 const index = ({ form }) => {
+    const handleSubmit = () => {
+        form.validateFields((err, values) => {
+            if (!err) {
+                fetch("/api/users/login", {
+                    method: 'POST',
+                    body: JSON.stringify(values),
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+                }).then(res => res.json()).then(data => console.log(data)).catch(err => console.log(err))
+            }
+        })
+    }
     return (
         <Layout>
             <Content className={styles.content}>
@@ -48,7 +62,7 @@ const index = ({ form }) => {
                         )}
                         </Form.Item>
                         <Form.Item>
-                        <Button type="primary" style={{ width: '100%' }}>
+                        <Button onClick={handleSubmit} type="primary" style={{ width: '100%' }}>
                             Sign in
                         </Button>
                         </Form.Item>
