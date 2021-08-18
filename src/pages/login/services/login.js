@@ -1,4 +1,4 @@
-import fetch from 'dva/fetch'
+import { fetch } from 'dva'
 
 export function login(params) {
     return fetch("/api/users/login", {
