@@ -1,6 +1,6 @@
 import React from 'react'
+import { login } from './services/login'
 import { Layout, Icon, Form, Input, Button } from 'antd'
-import fetch from 'dva/fetch'
 import styles from './index.scss'
 
 const { Content, Footer } = Layout;
@@ -9,13 +9,7 @@ const index = ({ form }) => {
     const handleSubmit = () => {
         form.validateFields((err, values) => {
             if (!err) {
-                fetch("/api/users/login", {
-                    method: 'POST',
-                    body: JSON.stringify(values),
-                    headers: {
-                        "Content-Type": "application/json",
-                    }
-                }).then(res => res.json()).then(data => console.log(data)).catch(err => console.log(err))
+                login(values).then(res => res.json()).then(data => console.log(data)).catch(err => console.log(err))
             }
         })
     }
