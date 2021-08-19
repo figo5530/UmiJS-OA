@@ -9,7 +9,7 @@ const index = ({ form }) => {
     const handleSubmit = () => {
         form.validateFields((err, values) => {
             if (!err) {
-                login(values).then(res => res.json()).then(data => console.log(data)).catch(err => console.log(err))
+                login(values).then(data => console.log(data)).catch(err => console.log(err))
             }
         })
     }
