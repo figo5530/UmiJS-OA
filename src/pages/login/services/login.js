@@ -1,5 +1,6 @@
 import { notification } from 'antd'
 import { fetch } from 'dva'
+import router from 'umi/router'
 
 const codeMessage = {
     200:'服务器成功返回请求数据',
@@ -35,5 +36,22 @@ export function login(params) {
             message: `failed request ${resp.status} ${resp.url}`,
             description: errortext
         })
-    }).catch(err => {})
+        const error = new Error(errortext)
+        error.name = resp.status
+        error.response = resp
+        throw error
+    }).catch(err => {
+        if (err && err.response ) {
+            const { status } = err.response
+            if (status === 403) {
+                router.push('/exception/403')
+            }
+            if (status <= 504 && status >= 500) {
+                router.push('/exception/500')
+            }
+            if (status >= 404 && status <= 422) {
+                router.push('/exception/404')
+            }
+        }
+    })
 }
