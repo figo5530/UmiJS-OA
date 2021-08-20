@@ -4,17 +4,17 @@ import ReactEcharts from 'echarts-for-react'
 
 const reportOptions = {
   title: {
-    text: '本周周报统计',
+    text: 'Weekly Statistics',
     x: 'center',
   },
   tooltip: {
     trigger: 'item',
-    formatter: '{b} : {c} 人({d}%)',
+    formatter: '{b} : {c} person({d}%)',
   },
   legend: {
     orient: 'vertical',
     left: 'left',
-    data: ['提交人数', '未提交人数'],
+    data: ['submitted', 'unsubmitted'],
   },
   series: [
     {
@@ -22,8 +22,8 @@ const reportOptions = {
       radius: '55%',
       center: ['50%', '60%'],
       data: [
-        { value: 200, name: '已提交' },
-        { value: 30, name: '未提交' },
+        { value: 200, name: 'submitted' },
+        { value: 30, name: 'unsubmitted' },
       ],
       itemStyle: {
         emphasis: {
@@ -38,7 +38,7 @@ const reportOptions = {
 
 const loginOptions = {
   title: {
-    text: '本周登录人次',
+    text: 'Weekly log in times',
     x: 'center',
     textAlign: 'center',
   },
@@ -52,12 +52,13 @@ const loginOptions = {
     },
   },
   legend: {
-    data: ['登录人数', '登录次数'],
+    left: "left",
+    data: ['users', 'times'],
   },
   xAxis: [
     {
       type: 'category',
-      data: ['周一', '周二', '周三', '周三', '周五', '周六', '周日'],
+      data: ['Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat', 'Sun'],
       axisPointer: {
         type: 'shadow',
       },
@@ -66,26 +67,26 @@ const loginOptions = {
   yAxis: [
     {
       type: 'value',
-      name: '人数',
+      name: 'users',
       min: 0,
       // interval: 50,
       axisLabel: {
-        formatter: '{value} 人',
+        formatter: '{value} users',
       },
     },
     {
       type: 'value',
-      name: '次数',
+      name: 'times',
       min: 0,
       // interval: 5,
       axisLabel: {
-        formatter: '{value} 次',
+        formatter: '{value} times',
       },
     },
   ],
   series: [
     {
-      name: '人数',
+      name: 'users',
       type: 'bar',
       data: [230, 150, 120, 100, 210, 15, 0],
       barWidth: [35],
@@ -94,7 +95,7 @@ const loginOptions = {
       },
     },
     {
-      name: '次数',
+      name: 'times',
       type: 'line',
       yAxisIndex: 1,
       data: [350, 300, 280, 378, 320, 20, 0],
