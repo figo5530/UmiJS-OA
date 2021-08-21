@@ -1,3 +1,6 @@
+/**
+ * title: Home
+ */
 import styles from './index.scss';
 import { Card, Col, Row } from 'antd'
 import ReactEcharts from 'echarts-for-react'
