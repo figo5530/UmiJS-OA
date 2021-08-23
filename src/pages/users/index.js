@@ -2,8 +2,9 @@
  * title: User
  */
 import React from 'react'
-import  { Button, Table } from 'antd'
-import styles from './index.scss'
+import  { Button } from 'antd'
+import { Content, Tool } from '@/components/Layout'
+import Table from '@/components/Table'
 const index = () => {
     const columns =[
         {
@@ -36,12 +37,12 @@ const index = () => {
         },
     ]
     return (
-        <div className={`${styles['content-wrapper']}`}>
-            <div className={`${styles['tool-wrapper']}`}>
+        <Content>
+            <Tool>
                 <Button type="primary">Add User</Button>
-            </div>
+            </Tool>
             <Table columns={columns}/>
-        </div>
+        </Content>
     )
 }
 
