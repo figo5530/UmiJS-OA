@@ -18,6 +18,9 @@ const header = ({ location }) => {
             <MenuItem key='/'>
             <Link to="/">Home</Link>
             </MenuItem>
+            <MenuItem key='/users'>
+            <Link to="/">User</Link>
+            </MenuItem>
         </Menu>
         <div className='right'>
             <Dropdown overlay={menu} >
