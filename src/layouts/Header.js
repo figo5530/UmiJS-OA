@@ -19,12 +19,12 @@ const header = ({ location }) => {
             <Link to="/">Home</Link>
             </MenuItem>
             <MenuItem key='/users'>
-            <Link to="/">User</Link>
+            <Link to="/users">User</Link>
             </MenuItem>
         </Menu>
         <div className='right'>
             <Dropdown overlay={menu} >
-                <a className="ant-dropdown-link" href="www.google.com">
+                <a className="ant-dropdown-link">
                     <Icon type='user' style={{ marginRight: 3 }}/> admin
                 </a>
             </Dropdown>
