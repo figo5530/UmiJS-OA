@@ -13,8 +13,9 @@ export default {
        }
     },
     effects: {
-        *fetch({}, {call, put}) {
-            yield call(userServices.fetch, {page: 1, pageSize: 5})
+        *fetch({payload: { page }}, {call, put, select}) {
+            const pageSize = yield select(state => state.users.pageSize) 
+            yield call(userServices.fetch, {page, pageSize})
         }
 
     },
@@ -22,7 +23,7 @@ export default {
         setup({dispatch, history}) {
             return history.listen(({pathname}) => {
                 if (pathname == '/users') {
-                    dispatch({type:"fetch"})
+                    dispatch({type: "fetch", payload: {page: 1}})
                 }
             })
         }
