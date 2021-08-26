@@ -5,10 +5,9 @@ import React from 'react'
 import  { Button } from 'antd'
 import { Content, Tool } from '@/components/Layout'
 import Table from '@/components/Table'
-import { fetch } from './services/users'
 import { connect } from 'dva'
-const index = () => {
-    fetch().then(res => console.log(res))
+const index = ({ list }) => {
+
     const columns =[
         {
             title: 'Username',
@@ -34,6 +33,7 @@ const index = () => {
             render: (text, record) => (
                 <div>
                     <a>Edit</a>
+                    <a> </a>
                     <a>Delete</a>
                 </div>
             )
@@ -44,7 +44,7 @@ const index = () => {
             <Tool>
                 <Button type="primary">Add User</Button>
             </Tool>
-            <Table columns={columns}/>
+            <Table columns={columns} dataSource={list} rowKey={(list, index) => list.id}/>
         </Content>
     )
 }

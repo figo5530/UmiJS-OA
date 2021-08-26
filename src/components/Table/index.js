@@ -1,7 +1,7 @@
 import './index.scss'
 import { Table } from 'antd'
 
-const index = ({ className, ... rest }) => (
+const index = ({ className, ...rest }) => (
     <Table className={`table-wrapper ${className}`} {...rest}/>
 )
 

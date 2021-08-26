@@ -1,5 +1,5 @@
-import request from '@/utils/request'
+import request from '@/utils/request';
 
-export function fetch() {
-    return request("/api/users/get_users/1/3")
+export function fetch({ page, pageSize }) {
+  return request(`/api/users/get_users/${page}/${pageSize}`);
 }

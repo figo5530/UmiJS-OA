@@ -24,7 +24,7 @@ const header = ({ location }) => {
         </Menu>
         <div className='right'>
             <Dropdown overlay={menu} >
-                <a className="ant-dropdown-link">
+                <a className="ant-dropdown-link" href="www.google.com">
                     <Icon type='user' style={{ marginRight: 3 }}/> admin
                 </a>
             </Dropdown>
