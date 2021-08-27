@@ -34,7 +34,6 @@ const index = ({ list }) => {
             render: (text, record) => (
                 <div>
                     <a>Edit</a>
-                    <a> </a>
                     <a>Delete</a>
                 </div>
             )
