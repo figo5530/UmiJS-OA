@@ -25,7 +25,8 @@ const index = ({ list }) => {
             title: 'Type',
             dataIndex: 'type',
             key: 'type',
-            width: '25%'
+            width: '25%',
+            render: text => <span>{text === "0" ? 'Adminstrator' : 'User'}</span>
         },
         {
             title: 'Operation',
