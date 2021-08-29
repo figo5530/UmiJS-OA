@@ -43,8 +43,9 @@ const index = ({ list }) => {
     return (
         <Content>
             <Tool>
-                <Button type="primary">Add User</Button>
-                <UserModel></UserModel>
+                <UserModel>
+                    <Button type="primary">Add User</Button>
+                </UserModel>
             </Tool>
             <Table columns={columns} dataSource={list} rowKey={(list, index) => list.id}/>
         </Content>

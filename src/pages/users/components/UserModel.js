@@ -8,15 +8,26 @@ const formItemLayout = {
     wrapperCol: {span : 14 },
 }
 
+const withClick = (element, handleClick = () => {}) => {
+    return <element.type {...element.props} onClick={handleClick} />;
+  };
+
 class UserModel extends Component {
     state = {
         visible: false
     }
 
+    handlePopClick = () => {
+        console.log("pop")
+    }
+
     render() {
         const { visible } = this.state
+        const { children } = this.props
         return (
-            <Modal title="Add User" visible={visible} centered={true} >
+            <div>
+            {withClick(children, this.handlePopClick)}    
+            <Modal title="Add User" visible={visible} centered={true} maskClosable={false}>
                 <Form>
                     <FormItem label="Username" {...formItemLayout}>
                         <Input placeholder="Please input the username"/>
@@ -32,6 +43,7 @@ class UserModel extends Component {
                     </FormItem>
                 </Form>
             </Modal>
+            </div>
         )
     }
 }
