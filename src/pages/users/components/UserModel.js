@@ -18,7 +18,9 @@ class UserModel extends Component {
     }
 
     handlePopClick = () => {
-        console.log("pop")
+        this.setState({
+            visible: true
+        })
     }
 
     render() {
