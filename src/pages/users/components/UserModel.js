@@ -9,9 +9,14 @@ const formItemLayout = {
 }
 
 class UserModel extends Component {
+    state = {
+        visible: false
+    }
+
     render() {
+        const { visible } = this.state
         return (
-            <Modal title="Add User" visible={true} >
+            <Modal title="Add User" visible={visible} centered={true} >
                 <Form>
                     <FormItem label="Username" {...formItemLayout}>
                         <Input placeholder="Please input the username"/>
