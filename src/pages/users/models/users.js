@@ -25,7 +25,6 @@ export default {
                 })
             }
             const list = yield select(state => state.users.list)
-            console.log(list)
         }
 
     },

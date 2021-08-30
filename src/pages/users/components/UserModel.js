@@ -23,13 +23,19 @@ class UserModel extends Component {
         })
     }
 
+    handleCancel = () => {
+        this.setState({
+            visible: false
+        })
+    }
+
     render() {
         const { visible } = this.state
         const { children } = this.props
         return (
             <div>
             {withClick(children, this.handlePopClick)}    
-            <Modal title="Add User" visible={visible} centered={true} maskClosable={false}>
+            <Modal title="Add User" visible={visible} centered={true} maskClosable={false} onCancel={this.handleCancel}>
                 <Form>
                     <FormItem label="Username" {...formItemLayout}>
                         <Input placeholder="Please input the username"/>
