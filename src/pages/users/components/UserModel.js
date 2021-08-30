@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Modal, Form, Input, Radio } from 'antd'
+import { withClick } from '@/utils/hoc'
 
 const FormItem = Form.Item
 const RadioGroup = Radio.Group
@@ -7,10 +8,6 @@ const formItemLayout = {
     labelCol: {span : 6 },
     wrapperCol: {span : 14 },
 }
-
-const withClick = (element, handleClick = () => {}) => {
-    return <element.type {...element.props} onClick={handleClick} />;
-  };
 
 class UserModel extends Component {
     state = {
