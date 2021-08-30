@@ -1,4 +1,7 @@
-
 export const withClick = (element, handleClick = () => {}) => {
-    return <element.type {...element.props} onClick={handleClick} />
+    if (!element) return
+    if (Object.prototype.toString.call(element) === '[object Object]') {
+        return <element.type {...element.props} onClick={handleClick} />
+    }
+    return <span onClick={handleClick}>{element}</span>
 }
