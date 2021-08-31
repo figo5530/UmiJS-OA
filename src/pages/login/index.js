@@ -43,7 +43,7 @@ const index = ({ form }) => {
                                     rules: [
                                         {
                                             required: true,
-                                            message: "password can not be empty",
+                                            message: "Password can not be empty",
                                         },
                                     ],
                                 })(

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Modal, Form, Input, Radio } from 'antd'
 import { withClick } from '@/utils/hoc'
+import create from 'antd/lib/icon/IconFont'
 
 const FormItem = Form.Item
 const RadioGroup = Radio.Group
@@ -29,22 +30,47 @@ class UserModel extends Component {
     render() {
         const { visible } = this.state
         const { children } = this.props
+        const { getFieldDecorator } = this.props.form
         return (
             <div>
             {withClick(children, this.handlePopClick)}    
             <Modal title="Add User" visible={visible} centered={true} maskClosable={false} onCancel={this.handleCancel}>
                 <Form>
                     <FormItem label="Username" {...formItemLayout}>
-                        <Input placeholder="Please input the username"/>
+                        {getFieldDecorator('username', {
+                            rules: [
+                                {
+                                    required: true,
+                                    message: "Username can not be empty",
+                                },
+                            ],
+                        })(
+                        <Input placeholder="Please input the username"/>)}
                     </FormItem>
                     <FormItem label="Name" {...formItemLayout}>
-                        <Input placeholder="Please input the name"/>
+                        {getFieldDecorator('name', {
+                            rules: [
+                                {
+                                    required: true,
+                                    message: "Name can not be empty",
+                                },
+                            ],
+                        })(
+                        <Input placeholder="Please input the name"/>)}
                     </FormItem>
                     <FormItem label="Type" {...formItemLayout}>
+                        {getFieldDecorator('type', {
+                            rules: [
+                                {
+                                    required: true,
+                                    message: "Please choose one",
+                                },
+                            ],
+                        })(
                         <RadioGroup>
                             <Radio value={'0'}>Adminstrator</Radio>
                             <Radio value={'1'}>User</Radio>
-                        </RadioGroup>
+                        </RadioGroup>)}
                     </FormItem>
                 </Form>
             </Modal>
@@ -53,4 +79,4 @@ class UserModel extends Component {
     }
 }
 
-export default UserModel
+export default Form.create()(UserModel)
