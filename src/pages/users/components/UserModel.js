@@ -27,6 +27,14 @@ class UserModel extends Component {
         })
     }
 
+    handleOk =() => {
+        this.props.form.validateFields((err, values) => {
+            if (!err) {
+                console.log(values)
+            }
+        })
+    }
+
     render() {
         const { visible } = this.state
         const { children } = this.props
@@ -34,7 +42,12 @@ class UserModel extends Component {
         return (
             <div>
             {withClick(children, this.handlePopClick)}    
-            <Modal title="Add User" visible={visible} centered={true} maskClosable={false} onCancel={this.handleCancel}>
+            <Modal title="Add User" 
+            visible={visible} 
+            centered={true} 
+            maskClosable={false} 
+            onCancel={this.handleCancel}
+            onOk={this.handleOk}>
                 <Form>
                     <FormItem label="Username" {...formItemLayout}>
                         {getFieldDecorator('username', {
