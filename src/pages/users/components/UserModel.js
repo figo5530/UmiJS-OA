@@ -31,6 +31,7 @@ class UserModel extends Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log(values)
+                this.handleCancel()
             }
         })
     }
