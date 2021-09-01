@@ -40,10 +40,13 @@ const index = ({ list }) => {
             )
         },
     ]
+    const handleAdd = (values) => {
+        console.log(values)
+    }
     return (
         <Content>
             <Tool>
-                <UserModel>
+                <UserModel onAdd={handleAdd}>
                     <Button type="primary">Add User</Button>
                 </UserModel>
             </Tool>

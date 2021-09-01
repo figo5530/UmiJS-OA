@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Modal, Form, Input, Radio } from 'antd'
 import { withClick } from '@/utils/hoc'
-import create from 'antd/lib/icon/IconFont'
 
 const FormItem = Form.Item
 const RadioGroup = Radio.Group
@@ -30,8 +29,8 @@ class UserModel extends Component {
     handleOk =() => {
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log(values)
                 this.handleCancel()
+                this.props.onAdd(values)
             }
         })
     }
