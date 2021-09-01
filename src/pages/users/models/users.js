@@ -26,7 +26,7 @@ export default {
             }
         },
         *add({ payload }, { call }) {
-            console.log(payload)
+            return yield call(userServices.add, payload)
         }
 
     },

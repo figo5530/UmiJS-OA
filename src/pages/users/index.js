@@ -2,7 +2,7 @@
  * title: User
  */
 import React from 'react'
-import  { Button } from 'antd'
+import  { Button, Message } from 'antd'
 import { Content, Tool } from '@/components/Layout'
 import Table from '@/components/Table'
 import { connect } from 'dva'
@@ -40,8 +40,14 @@ const index = ({ list, dispatch }) => {
             )
         },
     ]
-    const handleAdd = (values) => {
-        dispatch({ type: 'users/add', payload: values })
+    const handleAdd = values => {
+        dispatch({ type: 'users/add', payload: values }).then(res => {
+            if (res && res.state === 'success') {
+                Message.success(res.msg)
+            } else {
+                Message.error('Failed to add user')
+            }
+        })
     }
     return (
         <Content>
