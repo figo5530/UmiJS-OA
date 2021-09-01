@@ -7,7 +7,7 @@ import { Content, Tool } from '@/components/Layout'
 import Table from '@/components/Table'
 import { connect } from 'dva'
 import UserModel from './components/UserModel'
-const index = ({ list }) => {
+const index = ({ list, dispatch }) => {
 
     const columns =[
         {
@@ -41,7 +41,7 @@ const index = ({ list }) => {
         },
     ]
     const handleAdd = (values) => {
-        console.log(values)
+        dispatch({ type: 'users/add', payload: values })
     }
     return (
         <Content>

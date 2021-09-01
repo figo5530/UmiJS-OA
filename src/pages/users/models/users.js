@@ -24,6 +24,9 @@ export default {
                     payload: { data: { list: [], total: 0 } }
                 })
             }
+        },
+        *add({ payload }, { call }) {
+            console.log(payload)
         }
 
     },
