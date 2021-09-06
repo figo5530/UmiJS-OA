@@ -24,8 +24,9 @@ export default async function request(url, options) {
     return await fetch(url, {
         ...options,
         headers: {
-            "Content-Type": "application/json",
-        }})
+            'Content-type': 'application/json',
+        },
+    })
     .then(checkStatus)
     .catch(checkErrorStatus)
 }

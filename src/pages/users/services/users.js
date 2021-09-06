@@ -5,8 +5,18 @@ export function fetch({ page, pageSize }) {
 }
 
 export function add(params) {
-  return request(`/api/users/add_user`, {
-    method: "POST",
+  // 发起请求 https://cjy-react-interface.herokuapp.com/api/users/add_user
+  return request('/api/users/add_user', {
+    method: 'POST',
     body: JSON.stringify(params),
-  });
+    }
+  )
+  // console.log(params)
+  // return fetch('/api/users/add_user',{
+  //   method: 'POST',
+  //   body: JSON.stringify(params),
+  //   headers: {
+  //     "Content-Type": "application/json"
+  //   }
+  // })
 }

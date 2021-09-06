@@ -1,4 +1,5 @@
 import * as userServices from '../services/users'
+
 export default {
     namespace: 'users',
     state: {

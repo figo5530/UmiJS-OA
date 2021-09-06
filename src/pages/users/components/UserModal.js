@@ -9,7 +9,7 @@ const formItemLayout = {
     wrapperCol: {span : 14 },
 }
 
-class UserModel extends Component {
+class UserModal extends Component {
     state = {
         visible: false
     }
@@ -29,8 +29,11 @@ class UserModel extends Component {
     handleOk =() => {
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                this.handleCancel()
-                this.props.onAdd(values)
+                this.props.onAdd(values).then(res => {
+                    if (res.state === 'success') {
+                        this.handleCancel()
+                    }
+                })
             }
         })
     }
@@ -92,4 +95,4 @@ class UserModel extends Component {
     }
 }
 
-export default Form.create()(UserModel)
+export default Form.create()(UserModal)
