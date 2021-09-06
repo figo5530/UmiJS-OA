@@ -4,6 +4,7 @@ import { withClick } from '@/utils/hoc'
 
 const FormItem = Form.Item
 const RadioGroup = Radio.Group
+
 const formItemLayout = {
     labelCol: {span : 6 },
     wrapperCol: {span : 14 },
@@ -63,8 +64,8 @@ class UserModal extends Component {
                         })(
                         <Input placeholder="Please input the username"/>)}
                     </FormItem>
-                    <FormItem label="Name" {...formItemLayout}>
-                        {getFieldDecorator('name', {
+                    <FormItem label="Nickname" {...formItemLayout}>
+                        {getFieldDecorator('nickname', {
                             rules: [
                                 {
                                     required: true,
