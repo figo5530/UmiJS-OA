@@ -84,6 +84,7 @@ class UserModal extends Component {
                                     message: "Please choose one",
                                 },
                             ],
+                            initialValue: '1',
                         })(
                         <RadioGroup>
                             <Radio value={'0'}>Adminstrator</Radio>
