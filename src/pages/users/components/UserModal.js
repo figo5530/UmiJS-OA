@@ -41,7 +41,7 @@ class UserModal extends Component {
 
     render() {
         const { visible } = this.state
-        const { children } = this.props
+        const { children, addLoading } = this.props
         const { getFieldDecorator } = this.props.form
         return (
             <div>
@@ -51,7 +51,8 @@ class UserModal extends Component {
             centered={true} 
             maskClosable={false} 
             onCancel={this.handleCancel}
-            onOk={this.handleOk}>
+            onOk={this.handleOk}
+            confirmLoading={addLoading}>
                 <Form>
                     <FormItem label="Username" {...formItemLayout}>
                         {getFieldDecorator('username', {

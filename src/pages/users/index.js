@@ -8,7 +8,7 @@ import Table from '@/components/Table'
 import { connect } from 'dva'
 import UserModal from './components/UserModal'
 
-const index = ({ list, dispatch }) => {
+const index = ({ list, dispatch, loading, addLoading }) => {
 
     const columns =[
         {
@@ -62,13 +62,17 @@ const index = ({ list, dispatch }) => {
     return (
         <Content>
             <Tool>
-                <UserModal onAdd={handleAdd}>
+                <UserModal onAdd={handleAdd} addLoading={addLoading}>
                     <Button type="primary">Add User</Button>
                 </UserModal>
             </Tool>
-            <Table columns={columns} dataSource={list} rowKey={(list, index) => list.id}/>
+            <Table columns={columns} dataSource={list} rowKey={(list, index) => list.id} loading={loading}/>
         </Content>
     )
 }
 
-export default connect(({users}) => ({...users}))(index)
+export default connect(({ users, loading }) => ({
+    ...users,
+    loading: loading.effects['users/fetch'],
+    addLoading: loading.effects['users/add']
+}))(index)
