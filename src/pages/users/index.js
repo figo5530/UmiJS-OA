@@ -8,7 +8,7 @@ import Table from '@/components/Table'
 import { connect } from 'dva'
 import UserModal from './components/UserModal'
 
-const index = ({ list, dispatch, loading, addLoading }) => {
+const index = ({ list, dispatch, loading, addLoading, total, page, pageSize }) => {
 
     const columns =[
         {
@@ -59,6 +59,13 @@ const index = ({ list, dispatch, loading, addLoading }) => {
             }
         })
     }
+
+    const handlePageChange = pageNum => {
+        if (page !== pageNum) {
+            dispatch({ type: 'users/fetch', payload: { page: pageNum } })
+        }
+    }
+
     return (
         <Content>
             <Tool>
@@ -66,7 +73,15 @@ const index = ({ list, dispatch, loading, addLoading }) => {
                     <Button type="primary">Add User</Button>
                 </UserModal>
             </Tool>
-            <Table columns={columns} dataSource={list} rowKey={(list, index) => list.id} loading={loading}/>
+            <Table columns={columns} dataSource={list} 
+                rowKey={(list, index) => list.id} loading={loading} 
+                pagination={{
+                    total: total,
+                    pageSize: pageSize,
+                    current: page,
+                    onChange: handlePageChange
+                }}
+            />
         </Content>
     )
 }
