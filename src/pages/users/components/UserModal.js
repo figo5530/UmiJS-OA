@@ -41,12 +41,13 @@ class UserModal extends Component {
 
     render() {
         const { visible } = this.state
-        const { children, addLoading } = this.props
+        const { children, addLoading, title } = this.props
         const { getFieldDecorator } = this.props.form
+        const { username, nickname, type } = this.props.record
         return (
             <div>
             {withClick(children, this.handlePopClick)}    
-            <Modal title="Add User" 
+            <Modal title={title} 
             visible={visible} 
             centered={true} 
             maskClosable={false} 
@@ -62,6 +63,7 @@ class UserModal extends Component {
                                     message: "Username can not be empty",
                                 },
                             ],
+                            initialValue: username 
                         })(
                         <Input placeholder="Please input the username"/>)}
                     </FormItem>
@@ -73,6 +75,7 @@ class UserModal extends Component {
                                     message: "Name can not be empty",
                                 },
                             ],
+                            initialValue: nickname 
                         })(
                         <Input placeholder="Please input the name"/>)}
                     </FormItem>
@@ -84,7 +87,7 @@ class UserModal extends Component {
                                     message: "Please choose one",
                                 },
                             ],
-                            initialValue: '1',
+                            initialValue: type || '1',
                         })(
                         <RadioGroup>
                             <Radio value={'0'}>Adminstrator</Radio>
@@ -97,5 +100,8 @@ class UserModal extends Component {
         )
     }
 }
-
+UserModal.defaultProps = {
+    title: "Add User",
+    record: { username: "", nickname: "", type: "1" }
+}
 export default Form.create()(UserModal)
