@@ -35,7 +35,7 @@ const index = ({ list, dispatch, loading, addLoading, total, page, pageSize }) =
             key: 'operation',
             render: (text, record) => (
                 <div>
-                    <UserModal title="Edit User" record={record} onAdd={value => handleEdit(value, record.id)}>
+                    <UserModal title="Edit User" record={record} onAdd={value => handleEdit(record.id, value)}>
                         <a>Edit</a>
                         <a>Delete</a>
                     </UserModal>
@@ -53,7 +53,7 @@ const index = ({ list, dispatch, loading, addLoading, total, page, pageSize }) =
         .then(res => {
             console.log(res)
             if (res && res.state === 'success') {
-                Message.success(res.msg)
+                Message.success('Successfully added')
                 reload()
                 return res
             } else {
@@ -68,8 +68,18 @@ const index = ({ list, dispatch, loading, addLoading, total, page, pageSize }) =
         }
     }
 
-    const handleEdit = (value, id) => {
-        console.log(value, id)
+    const handleEdit = (id, value) => {
+        return dispatch({ type: 'users/edit', payload: {id, value} })
+        .then(res => {
+            console.log(res)
+            if (res && res.state === 'success') {
+                Message.success('Successfully updated')
+                reload()
+                return res
+            } else {
+                Message.error('Failed to edit user')
+            }
+        })
     }
 
     return (
