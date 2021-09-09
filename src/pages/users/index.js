@@ -35,7 +35,7 @@ const index = ({ list, dispatch, loading, addLoading, total, page, pageSize }) =
             key: 'operation',
             render: (text, record) => (
                 <div>
-                    <UserModal title="Edit User" record={record}>
+                    <UserModal title="Edit User" record={record} onAdd={value => handleEdit(value, record.id)}>
                         <a>Edit</a>
                         <a>Delete</a>
                     </UserModal>
@@ -66,6 +66,10 @@ const index = ({ list, dispatch, loading, addLoading, total, page, pageSize }) =
         if (page !== pageNum) {
             dispatch({ type: 'users/fetch', payload: { page: pageNum } })
         }
+    }
+
+    const handleEdit = (value, id) => {
+        console.log(value, id)
     }
 
     return (

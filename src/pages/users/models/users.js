@@ -28,6 +28,9 @@ export default {
         },
         *add({ payload }, { call }) {
             return yield call(userServices.add, payload)
+        },
+        *edit({ payload:{ id, value } }, { call }) {
+            return yield call(userServices.edit, id, value)
         }
 
     },

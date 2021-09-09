@@ -11,12 +11,21 @@ export function add(params) {
     body: JSON.stringify(params),
     }
   )
-  // console.log(params)
-  // return fetch('/api/users/add_user',{
-  //   method: 'POST',
-  //   body: JSON.stringify(params),
-  //   headers: {
-  //     "Content-Type": "application/json"
-  //   }
-  // })
+}
+
+/**
+ * edit user
+ * @param id
+ * @param params.username
+ * @param params.nickname
+ * @param params.type
+ */
+
+export function edit(id, params) {
+  // 发起请求 https://cjy-react-interface.herokuapp.com/api/users/edit_user
+  return request(`/api/users/edit_user/${id}`,{
+    method: 'POST',
+    body: JSON.stringify(params),
+    }
+  )
 }
