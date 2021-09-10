@@ -29,3 +29,11 @@ export function edit(id, params) {
     }
   )
 }
+
+export function remove(id) {
+  // 发起请求 https://cjy-react-interface.herokuapp.com/api/users/delete_user
+  return request(`/api/users/delete_user/${id}`,{
+    method: 'DELETE',
+    }
+  )
+}

@@ -31,6 +31,9 @@ export default {
         },
         *edit({ payload:{ id, value } }, { call }) {
             return yield call(userServices.edit, id, value)
+        },
+        *remove({ payload }, { call }) {
+            return yield call(userServices.remove, payload)
         }
 
     },
