@@ -38,7 +38,7 @@ const index = ({ list, dispatch, loading, addLoading, total, page, pageSize }) =
                     <UserModal title="Edit User" record={record} onAdd={value => handleEdit(record.id, value)}>
                         <a>Edit</a>
                     </UserModal>
-                    <Popconfirm title="Confirm to delete this user?">
+                    <Popconfirm title="Confirm to delete this user?" onConfirm={() => handleDelete(record.id)}>
                         <a>Delete</a>
                     </Popconfirm>
                 </div>
@@ -80,6 +80,18 @@ const index = ({ list, dispatch, loading, addLoading, total, page, pageSize }) =
                 return res
             } else {
                 Message.error('Failed to edit user')
+            }
+        })
+    }
+    
+    const handleDelete = (id) => {
+        return dispatch({ type: 'users/remove', payload: id })
+        .then(res => {
+            if (res && res.state === 'success') {
+                Message.success('Successfully deleted')
+                reload()
+            } else {
+                Message.error('Failed to delete user')
             }
         })
     }
