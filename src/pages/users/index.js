@@ -2,7 +2,7 @@
  * title: User
  */
 import React from 'react'
-import  { Button, Message } from 'antd'
+import  { Button, Message, Popconfirm } from 'antd'
 import { Content, Tool } from '@/components/Layout'
 import Table from '@/components/Table'
 import { connect } from 'dva'
@@ -37,8 +37,10 @@ const index = ({ list, dispatch, loading, addLoading, total, page, pageSize }) =
                 <div>
                     <UserModal title="Edit User" record={record} onAdd={value => handleEdit(record.id, value)}>
                         <a>Edit</a>
-                        <a>Delete</a>
                     </UserModal>
+                    <Popconfirm title="Confirm to delete this user?">
+                        <a>Delete</a>
+                    </Popconfirm>
                 </div>
             )
         },
