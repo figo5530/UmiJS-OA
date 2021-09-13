@@ -1,5 +1,5 @@
 import { Layout, ConfigProvider } from 'antd'
-import zhCn from 'antd/es/locale/zh_CN'
+// import zhCn from 'antd/es/locale/zh_CN'
 import Header from './Header';
 import Footer from './Footer';
 import './index.scss'
@@ -11,7 +11,7 @@ function BasicLayout({ children, location }) {
     return children
   }
   return (
-    <ConfigProvider locale={zhCn}>
+    <ConfigProvider /*locale={zhCn}*/>
       <Layout className="basic-layout">
         <Header />
           <Content className="content">{children}</Content>
