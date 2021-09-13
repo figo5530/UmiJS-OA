@@ -16,10 +16,13 @@ const header = ({ location }) => {
         <img className="logo" src={require('@/assets/logo.png')} alt="logo" />
         <Menu className="menus" mode="horizontal" theme="light" selectedKeys={[location.pathname]}>
             <MenuItem key='/'>
-            <Link to="/">Home</Link>
+                <Link to="/">Home</Link>
             </MenuItem>
             <MenuItem key='/users'>
-            <Link to="/users">User</Link>
+                <Link to="/users">User</Link>
+            </MenuItem>
+            <MenuItem key='/reports'>
+                <Link to="/reports">Report</Link>
             </MenuItem>
         </Menu>
         <div className='right'>
