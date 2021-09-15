@@ -5,14 +5,31 @@ import { Content } from '@/components/Layout'
 
 class index extends Component {
     render() {
+        const { getFieldDecorator } = this.props.form
         return (
             <Content>
                 <Form>
                     <Form.Item label="Title">
-                        <Input placeholder="Please input the title"/>
+                        {getFieldDecorator('title', {
+                            rules: [
+                                {
+                                    required: true,
+                                    message: "Title can not be empty",
+                                },
+                            ]
+                        })(
+                        <Input placeholder="Please input the title"/>)}
                     </Form.Item>
                     <Form.Item label="Recipient">
-                        <Input placeholder="Please select the recipient"/>
+                        {getFieldDecorator('recipient', {
+                            rules: [
+                                {
+                                    required: true,
+                                    message: "Please select the recipient",
+                                },
+                            ]
+                        })(
+                        <Select placeholder="Please select the recipient"/>)}
                     </Form.Item>
                     <Form.Item className="action">
                         <Button>Cancel</Button>
@@ -24,4 +41,4 @@ class index extends Component {
     }
 }
 
-export default index
+export default Form.create()(index)
