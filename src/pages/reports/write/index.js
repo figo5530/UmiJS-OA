@@ -5,9 +5,20 @@
 import React, { Component } from 'react'
 import { Form, Input, Select, Button } from 'antd'
 import { Content } from '@/components/Layout'
+import E from 'wangeditor'
 
 
 class index extends Component {
+
+    componentDidMount() {
+        this.initEditor()
+    }
+
+    initEditor() {
+        const editor = new E(this.refs.editorRef)
+        editor.create()
+    }
+
     render() {
         const { getFieldDecorator } = this.props.form
         return (
@@ -34,6 +45,9 @@ class index extends Component {
                             ]
                         })(
                         <Select placeholder="Please select the recipient"/>)}
+                    </Form.Item>
+                    <Form.Item label="Content" required>
+                        <div ref="editorRef"/>
                     </Form.Item>
                     <Form.Item className="action">
                         <Button>Cancel</Button>
