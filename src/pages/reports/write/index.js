@@ -12,6 +12,7 @@ class index extends Component {
 
     constructor(props) {
         super(props)
+
         this.state = {
             editorContent: null,
             editorCheck: true
@@ -24,8 +25,7 @@ class index extends Component {
 
     initEditor() {
         const editor = new E(this.refs.editorRef)
-
-        editor.customConfig.onchage = html => {
+        editor.config.onchange = html => {
             let editorCheck = true
             if (!html || html == "<p><br/></p>") {
                 editorCheck = false
