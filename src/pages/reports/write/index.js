@@ -6,6 +6,8 @@ import React, { Component } from 'react'
 import { Form, Input, Select, Button } from 'antd'
 import { Content } from '@/components/Layout'
 import E from 'wangeditor'
+import { connect } from 'dva'
+import reports from '../models/reports'
 
 
 class index extends Component {
@@ -21,6 +23,14 @@ class index extends Component {
 
     componentDidMount() {
         this.initEditor()
+        this.getAllUsers()
+    }
+
+    getAllUsers() {
+        this.props.dispatch({
+            type: 'reports/getAllUsers',
+            
+        })
     }
 
     initEditor() {
@@ -80,4 +90,5 @@ class index extends Component {
     }
 }
 
-export default Form.create()(index)
+export default connect(({ reports }) => ({...reports}))(Form.create()(index))
+
