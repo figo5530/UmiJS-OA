@@ -1,5 +1,7 @@
 import React from 'react'
 import { login } from './services/login'
+import jwt_decode from 'jwt-decode'
+import router from 'umi/router'
 import { Layout, Icon, Form, Input, Button } from 'antd'
 import styles from './index.scss'
 
@@ -9,7 +11,16 @@ const index = ({ form }) => {
     const handleSubmit = () => {
         form.validateFields((err, values) => {
             if (!err) {
-                login(values).then(data => console.log(data)).catch(err => console.log(err))
+                login(values).then(res => {
+                    const token = jwt_decode(res.token)
+                    const { id, nickname, username, type } = token
+                    localStorage.setItem('username', username)
+                    localStorage.setItem('nickname', nickname)
+                    localStorage.setItem('userId', id)
+                    localStorage.setItem('authority', type === '0' ? 'admin' : 'user')
+                    router.push('/')
+                })
+                .catch(err => console.log(err))
             }
         })
     }
