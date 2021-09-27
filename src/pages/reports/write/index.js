@@ -36,7 +36,15 @@ class index extends Component {
 
     renderUsers() {
         const { allUsersList } = this.props
-        console.log(allUsersList)
+        return (
+            <Select placeholder="Please select the recipient">
+                {allUsersList.map(({ id, nickname }, index) => [
+                    <Select.Option value={id} key={index}>
+                        {nickname}
+                    </Select.Option>
+                ])}
+            </Select>
+        )
     }
 
     initEditor() {
@@ -80,7 +88,7 @@ class index extends Component {
                                 },
                             ]
                         })(
-                        <Select placeholder="Please select the recipient"/>)}
+                        this.renderUsers())}
                     </Form.Item>
                     <Form.Item label="Content" required>
                         <div ref="editorRef" style={!editorCheck ? {border: '1px red solid'} : {border: '1px #eee solid'}}/>
