@@ -51,7 +51,7 @@ class index extends Component {
         const editor = new E(this.refs.editorRef)
         editor.config.onchange = html => {
             let editorCheck = true
-            if (!html || html == "<p><br/></p>") {
+            if (!html || html === "<p><br/></p>") {
                 editorCheck = false
             }
             this.setState({
