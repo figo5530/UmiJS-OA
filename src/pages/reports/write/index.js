@@ -29,8 +29,14 @@ class index extends Component {
     getAllUsers() {
         this.props.dispatch({
             type: 'reports/getAllUsers',
-            
+        }).then(res => {
+            this.renderUsers()
         })
+    }
+
+    renderUsers() {
+        const { allUsersList } = this.props
+        console.log(allUsersList)
     }
 
     initEditor() {
