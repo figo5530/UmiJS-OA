@@ -32,7 +32,7 @@ const header = ({ location }) => {
         </Menu>
         <div className='right'>
             <Dropdown overlay={menu} >
-                <a className="ant-dropdown-link" href="www.google.com">
+                <a className="ant-dropdown-link" href="#">
                     <Icon type='user' style={{ marginRight: 3 }}/> {localStorage.nickname}
                 </a>
             </Dropdown>

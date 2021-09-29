@@ -62,6 +62,19 @@ class index extends Component {
         editor.create()
     }
 
+    handleOk = () => {
+        //form validation
+        const { editorCheck, editorContent } = this.state
+        this.props.form.validateFields((err, value) => {
+            if(!err) {
+                //editor validation
+                if (editorContent && editorCheck) {
+                    console.log(value, editorContent)
+                }
+            }
+        })
+    }
+
     render() {
         const { getFieldDecorator } = this.props.form
         const { editorCheck } = this.state
@@ -96,7 +109,7 @@ class index extends Component {
                     </Form.Item>
                     <Form.Item className="action">
                         <Button>Cancel</Button>
-                        <Button type="primary">Submit</Button>
+                        <Button onClick={this.handleOk} type="primary">Submit</Button>
                     </Form.Item>
                 </Form>
             </Content>
