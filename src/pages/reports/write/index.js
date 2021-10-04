@@ -69,7 +69,11 @@ class index extends Component {
             if(!err) {
                 //editor validation
                 if (editorContent && editorCheck) {
-                    console.log(value, editorContent)
+                    // console.log(value, editorContent)
+                    this.props.dispatch({
+                        type: 'reports/add',
+                        payload: { ...value, content: editorContent }
+                    })
                 }
             }
         })
