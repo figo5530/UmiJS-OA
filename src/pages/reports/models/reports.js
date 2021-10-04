@@ -22,6 +22,9 @@ export default {
                 })
             }
         },
+        *add({ payload }, { call }) {
+            return yield call(reportServices.add, payload)
+        }
 
     },
     subscriptions: {
