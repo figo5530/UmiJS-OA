@@ -3,11 +3,11 @@
  */
 
 import React, { Component } from 'react'
-import { Form, Input, Select, Button } from 'antd'
+import { Form, Input, Select, Button, Message} from 'antd'
 import { Content } from '@/components/Layout'
 import E from 'wangeditor'
 import { connect } from 'dva'
-import reports from '../models/reports'
+import router from 'umi/router'
 
 
 class index extends Component {
@@ -38,8 +38,8 @@ class index extends Component {
         const { allUsersList } = this.props
         return (
             <Select placeholder="Please select the recipient">
-                {allUsersList.map(({ id, nickname }, index) => [
-                    <Select.Option value={id} key={index}>
+                {allUsersList.map(({ username, nickname }, index) => [
+                    <Select.Option value={username} key={index}>
                         {nickname}
                     </Select.Option>
                 ])}
@@ -74,6 +74,18 @@ class index extends Component {
                         type: 'reports/add',
                         payload: { ...value, content: editorContent }
                     })
+                    .then(res => {
+                        if (res && res.state === 'success') {
+                            Message.success("Submit Successfully")
+                            router.push('/reports')
+                        } else {
+                            Message.success("Submit Failed")
+                        }
+                    })
+                } else {
+                    this.setState({
+                        editorCheck: false
+                    })
                 }
             }
         })
@@ -97,7 +109,7 @@ class index extends Component {
                         <Input placeholder="Please input the title"/>)}
                     </Form.Item>
                     <Form.Item label="Recipient">
-                        {getFieldDecorator('recipient', {
+                        {getFieldDecorator('username', {
                             rules: [
                                 {
                                     required: true,
