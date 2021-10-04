@@ -6,7 +6,6 @@ export function fetchAllUsers() {
 
 
 /**
- * 
  * @param {createid} params.createUserId 
  * @param {title} params.title 
  * @param {content} params.content 
@@ -18,4 +17,13 @@ export function add(params) {
         method: 'POST',
         body: JSON.stringify(params)
     })
+} 
+
+/**
+ * @param {page} page
+ * @param {pageSize} pageSize
+ * @param {userId} userId 
+ */
+export function fetchMyReports({ page, pageSize }) {
+    return request(`/api/users/reports/${page}/${pageSize}/${localStorage.userId}`)
 } 
