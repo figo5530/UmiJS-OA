@@ -1,16 +1,25 @@
 import React from 'react'
 import { Row, Col, Card, Pagination } from 'antd'
 import { connect } from 'dva'
-const List = ({ list, page, pageSize, total }) => {
+const List = ({ list, page, pageSize, total, dispatch }) => {
 
     const handleChangePage = current => {
-        console.log(current)
+        if (current !== page) {
+            getDatas(current)
+        }
     }
+
+    const getDatas = page => {
+        dispatch({
+            type: 'reports/fetch',
+            payload: { page }
+        })
+    }
+
     const colSpan = { xl: 6, xxl:4, span: 6 }
     return (
         <div>
             <Row gutter={20}>
-                {console.log(list, page, pageSize, total)}
                 {list.map(item => (
                 <Col {...colSpan} key={item.id}>
                     <Card title={item.createTime}>
