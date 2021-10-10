@@ -5,6 +5,7 @@ import React, { Component } from 'react'
 import Link from 'umi/link'
 import { Button } from 'antd'
 import { Content, Tool } from '@/components/Layout'
+import List from './components/List'
 
 class index extends Component {
     render() {
@@ -15,6 +16,7 @@ class index extends Component {
                         <Link to="/reports/write">New</Link>
                     </Button>
                 </Tool>
+                <List></List>
             </Content>
         )
     }
