@@ -30,7 +30,7 @@ const List = ({ list, page, pageSize, total, dispatch }) => {
                 ))}
             </Row>
             {list.length ? (
-                <Pagination current={page} pageSize={pageSize} total={total} onChange={handleChangePage} />
+                <Pagination className='global-pagination' current={page} pageSize={pageSize} total={total} onChange={handleChangePage} />
             ) : ''}
         </div>
     )
