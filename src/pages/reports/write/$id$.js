@@ -25,14 +25,16 @@ class $id$ extends Component {
     componentDidMount() {
         if(this.id) {
             //edit
-            this.getDatas()
+            this.getDatas().then(() => {
+                console.log(this.props.info)
+            })
         }
         this.initEditor()
         this.getAllUsers()
     }
 
     getDatas() {
-        this.props.dispatch({
+        return this.props.dispatch({
             type: "reports/fetchInfo",
             payload: this.id
         })
