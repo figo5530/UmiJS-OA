@@ -10,11 +10,12 @@ import { connect } from 'dva'
 import router from 'umi/router'
 
 
-class index extends Component {
+class $id$ extends Component {
 
     constructor(props) {
         super(props)
 
+        this.id = props.match.params.id
         this.state = {
             editorContent: null,
             editorCheck: true
@@ -22,8 +23,19 @@ class index extends Component {
     }
 
     componentDidMount() {
+        if(this.id) {
+            //edit
+            this.getDatas()
+        }
         this.initEditor()
         this.getAllUsers()
+    }
+
+    getDatas() {
+        this.props.dispatch({
+            type: "reports/fetchInfo",
+            payload: this.id
+        })
     }
 
     getAllUsers() {
@@ -133,5 +145,5 @@ class index extends Component {
     }
 }
 
-export default connect(({ reports }) => ({...reports}))(Form.create()(index))
+export default connect(({ reports }) => ({...reports}))(Form.create()($id$))
 

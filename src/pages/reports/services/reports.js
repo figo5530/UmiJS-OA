@@ -25,4 +25,12 @@ export function add(params) {
  */
 export function fetchMyReports({ page, pageSize }) {
     return request(`/api/users/reports/${page}/${pageSize}/${localStorage.userId}`)
+}
+
+/**
+ * @param {Weekly id} id
+ * @param {userId} userId 
+ */
+ export function fetchInfo(id) {
+    return request(`/api/users/report_detail/${localStorage.userId}/${id}`)
 } 

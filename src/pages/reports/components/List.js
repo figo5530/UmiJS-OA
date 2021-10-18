@@ -1,7 +1,6 @@
 import React from 'react'
 import { Row, Col, Card, Pagination, Tooltip, Icon } from 'antd'
 import { connect } from 'dva'
-import { T } from 'antd/lib/upload/utils'
 const List = ({ list, page, pageSize, total, dispatch }) => {
 
     const handleChangePage = current => {

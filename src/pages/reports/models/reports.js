@@ -44,6 +44,10 @@ export default {
                 })
             }
         },
+        *fetchInfo({payload}, {call, put}) {
+            const res = yield call(reportServices.fetchInfo, payload)
+            console.log(res)
+        }
 
     },
     subscriptions: {
