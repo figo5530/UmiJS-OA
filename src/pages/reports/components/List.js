@@ -1,6 +1,7 @@
 import React from 'react'
-import { Row, Col, Card, Pagination } from 'antd'
+import { Row, Col, Card, Pagination, Tooltip, Icon } from 'antd'
 import { connect } from 'dva'
+import { T } from 'antd/lib/upload/utils'
 const List = ({ list, page, pageSize, total, dispatch }) => {
 
     const handleChangePage = current => {
@@ -22,7 +23,15 @@ const List = ({ list, page, pageSize, total, dispatch }) => {
             <Row gutter={20}>
                 {list.map(item => (
                 <Col {...colSpan} key={item.id}>
-                    <Card title={item.createTime}>
+                    <Card title={item.createTime} extra={
+                        <>
+                            <Tooltip placement="top" title="edit">
+                                <a href={`/reports/write/${item.id}`}>
+                                    <Icon type="form"></Icon>
+                                </a>
+                            </Tooltip>
+                        </>
+                    }>
                         <p className='title'>{item.title}</p>
                         <p>{item.receiverName}</p>
                     </Card>
