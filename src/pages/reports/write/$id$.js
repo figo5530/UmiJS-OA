@@ -26,10 +26,15 @@ class $id$ extends Component {
         if(this.id) {
             //edit
             this.getDatas().then(() => {
-                console.log(this.props.info)
+                const {content} = this.props.info
+                this.setState({
+                    editorContent: content
+                })
+                this.initEditor()
             })
+        } else {
+            this.initEditor()
         }
-        this.initEditor()
         this.getAllUsers()
     }
 
@@ -108,6 +113,7 @@ class $id$ extends Component {
     render() {
         const { getFieldDecorator } = this.props.form
         const { editorCheck } = this.state
+        const { title, receiverName, content } = this.props.info
         return (
             <Content>
                 <Form>
@@ -118,7 +124,8 @@ class $id$ extends Component {
                                     required: true,
                                     message: "Title can not be empty",
                                 },
-                            ]
+                            ],
+                            initialValue: title
                         })(
                         <Input placeholder="Please input the title"/>)}
                     </Form.Item>
@@ -129,12 +136,14 @@ class $id$ extends Component {
                                     required: true,
                                     message: "Please select the recipient",
                                 },
-                            ]
+                            ],
+                            initialValue: receiverName
                         })(
                         this.renderUsers())}
                     </Form.Item>
                     <Form.Item label="Content" required>
-                        <div ref="editorRef" style={!editorCheck ? {border: '1px red solid'} : {border: '1px #eee solid'}}/>
+                        <div ref="editorRef" style={!editorCheck ? {border: '1px red solid'} : {border: '1px #eee solid'}} 
+                        dangerouslySetInnerHTML={{__html: content}}/>
                         {!editorCheck && <p style={{color: 'red'}}>Content can not be empty</p>}
                     </Form.Item>
                     <Form.Item className="action">
