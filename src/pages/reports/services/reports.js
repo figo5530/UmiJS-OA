@@ -28,9 +28,22 @@ export function fetchMyReports({ page, pageSize }) {
 }
 
 /**
- * @param {Weekly id} id
+ * @param {WeeklyId} id
  * @param {userId} userId 
  */
  export function fetchInfo(id) {
     return request(`/api/users/report_detail/${localStorage.userId}/${id}`)
+}
+
+/**
+ * @param {WeeklyId} params.id 
+ * @param {title} params.title 
+ * @param {content} params.content 
+ * @param {recipient} params.receiverName 
+ */
+ export function update(params) {
+    return request(`/api/users/edit_report/${localStorage.userId}/${params.id}`, {
+        method: 'POST',
+        body: JSON.stringify(params)
+    })
 } 

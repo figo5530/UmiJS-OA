@@ -63,8 +63,10 @@ export default {
                     payload: {}
                 })
             }
+        },
+        *update({payload}, {call}) {
+            return yield call(reportServices.update, payload)
         }
-
     },
     subscriptions: {
         setup({dispatch, history}) {

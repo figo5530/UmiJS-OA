@@ -90,8 +90,8 @@ class $id$ extends Component {
                 if (editorContent && editorCheck) {
                     // console.log(value, editorContent)
                     this.props.dispatch({
-                        type: 'reports/add',
-                        payload: { ...value, content: editorContent }
+                        type: this.id ? 'reports/update' : 'reports/add',
+                        payload: { ...value, content: editorContent, id: this.id }
                     })
                     .then(res => {
                         if (res && res.state === 'success') {
