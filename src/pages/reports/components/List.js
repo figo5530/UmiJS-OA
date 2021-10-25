@@ -20,6 +20,8 @@ const List = ({ list, page, pageSize, total, dispatch }) => {
         dispatch({
             type: "reports/remove",
             payload: id
+        }).then(res => {
+            console.log(res)
         })
     }
 

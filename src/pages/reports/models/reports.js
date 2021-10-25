@@ -66,6 +66,9 @@ export default {
         },
         *update({payload}, {call}) {
             return yield call(reportServices.update, payload)
+        },
+        *remove({payload}, {call}) {
+            return yield call(reportServices.remove, payload)
         }
     },
     subscriptions: {

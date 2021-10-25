@@ -47,3 +47,13 @@ export function fetchMyReports({ page, pageSize }) {
         body: JSON.stringify(params)
     })
 } 
+
+/**
+ * @param {WeeklyId} id 
+ * @param {userId} userId
+ */
+export function remove(id) {
+    return request(`/api/users/delete_report/${localStorage.userId}/${id}`, {
+        method: 'DELETE'
+    })
+} 
