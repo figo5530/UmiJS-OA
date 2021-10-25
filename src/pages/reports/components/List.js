@@ -21,7 +21,12 @@ const List = ({ list, page, pageSize, total, dispatch }) => {
             type: "reports/remove",
             payload: id
         }).then(res => {
-            console.log(res)
+            if (res && res.state === "success") {
+                Message.success("Delete successfully")
+                getDatas(1)
+            } else {
+                Message.error(res ? res.msg : 'Can\'t delete report')
+            }
         })
     }
 
