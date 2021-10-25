@@ -1,5 +1,8 @@
 /**
  * title: Report
+ * Routers:
+ *   - ./src/routes/PrivateRoute.js
+ * authority: ["admin","user"]
  */
 import React, { Component } from 'react'
 import Link from 'umi/link'

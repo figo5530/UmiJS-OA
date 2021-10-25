@@ -1,5 +1,8 @@
 /**
- * title: New
+ * title: Write
+ * Routers:
+ *   - ./src/routes/PrivateRoute.js
+ * authority: ["admin","user"]
  */
 
 import React, { Component } from 'react'

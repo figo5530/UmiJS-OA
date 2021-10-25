@@ -1,5 +1,8 @@
 /**
  * title: Home
+ * Routers:
+ *   - ./src/routes/PrivateRoute.js
+ * authority: ["admin","user"]
  */
 import styles from './index.scss';
 import { Card, Col, Row } from 'antd'
