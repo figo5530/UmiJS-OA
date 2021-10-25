@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Card, Pagination, Tooltip, Icon } from 'antd'
+import { Row, Col, Card, Pagination, Tooltip, Icon, Popconfirm, Message } from 'antd'
 import { connect } from 'dva'
 const List = ({ list, page, pageSize, total, dispatch }) => {
 
@@ -16,6 +16,13 @@ const List = ({ list, page, pageSize, total, dispatch }) => {
         })
     }
 
+    const handleDelete = id => {
+        dispatch({
+            type: "reports/remove",
+            payload: id
+        })
+    }
+
     const colSpan = { xl: 6, xxl:4, span: 6 }
     return (
         <div>
@@ -29,6 +36,13 @@ const List = ({ list, page, pageSize, total, dispatch }) => {
                                     <Icon type="form"></Icon>
                                 </a>
                             </Tooltip>
+                            <Popconfirm title="Are you sure to delete this report?" onConfirm={() => handleDelete(item.id)}>
+                                <Tooltip placement="top" title="delete">
+                                    <a>
+                                        <Icon type="delete"></Icon>
+                                    </a>
+                                </Tooltip>
+                            </Popconfirm>
                         </>
                     }>
                         <p className='title'>{item.title}</p>
